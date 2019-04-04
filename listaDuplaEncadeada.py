@@ -39,7 +39,18 @@ class Lista:
 			no.prev=self.tail
 			self.tail=self.tail.next
 
-	def remover(self, dado):
+	def remove_last (self):
+			iterador = self.head
+			while iterador is not None:
+				if iterador.next is None:
+					anterior = iterador.prev
+
+				iterador = iterador.next
+			
+			anterior.next = None
+			return anterior.dado		
+
+	def remove_dado (self, dado):
         """ Remove um no da lista. """
         # O no atual eh o primeiro no da lista
         no_atual = self.head
