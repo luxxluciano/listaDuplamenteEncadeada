@@ -75,7 +75,7 @@ lista= Lista()
 for i in range (5):
 	lista.append(i)
 
-print(lista.head, "\n", lista, "\n", lista.tail)
+print(lista)
 
 #lista.remove()
 
