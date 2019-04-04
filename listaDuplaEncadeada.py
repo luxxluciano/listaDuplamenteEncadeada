@@ -39,23 +39,24 @@ class Lista:
 			no.prev=self.tail
 			self.tail=self.tail.next
 
-	#def remove (self):
-	#	self.tail.prev=self.tail
-	#	self.tail.prev=None		
+	def remove (self):
+		self.tail=self.tail.prev
+		self.tail.next=self.tail.next
+
 
 lista= Lista()
-for i in range (10):
+for i in range (5):
 	lista.append(i)
 
-print(lista)
+print(lista.head, "\n", lista, "\n", lista.tail)
 
-lista.remove()
+#lista.remove()
 
-print(lista)
+#print(lista)
 
-lista.remove()
+#lista.remove()
 
-print(lista)
+#print(lista)
 
 
 			
