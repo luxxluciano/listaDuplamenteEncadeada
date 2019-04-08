@@ -1,3 +1,5 @@
+import random
+
 class No:
 	def __init__(self, valor):
 		self.dado=valor
@@ -37,7 +39,7 @@ class Lista:
 		else:
 			self.tail.next=no=No(valor)
 			no.prev=self.tail
-			self.tail=self.tail.next
+			self.tail=self.tail.next		
 
 	def remove_last (self):
 			iterador = self.head
@@ -51,46 +53,52 @@ class Lista:
 			return anterior.dado		
 
 	def remove_dado (self, dado):
-        """ Remove um no da lista. """
+		# Remove um no da lista.
         # O no atual eh o primeiro no da lista
-        no_atual = self.head
- 
-        # Vamos procurar pelo dado que queremos remover
-        # Equanto o no atual for valido
-        while no_atual is not None:
-            # Verifica se eh o dado que estamos buscando
-            if no_atual.dado == dado:
-                # Se o dado que estamos buscando esta no primeiro no
+		no_atual = self.head
+		
+		# Vamos procurar pelo dado que queremos remover
+        # Equanto o no atual for valido		
+		while no_atual is not None:
+
+			# Verifica se eh o dado que estamos buscando
+			if no_atual.dado == dado:
+				# Se o dado que estamos buscando esta no primeiro no
                 # da lista, nao temos anterior
-                if no_atual.prev is None:
-                    # A cabeca 'aponta' para o proximo no da lista
-                    self.head = no_atual.next
+				if no_atual.prev is None:
+					# A cabeca 'aponta' para o proximo no da lista
+					self.head = no_atual.next					
                     # E o anterior do proximo no aponta para None
-                    no_atual.next.prev = None
-                else:
-                    # Exemplo: Removendo o valor 5
+					no_atual.next.prev = None
+				else:
+					# Exemplo: Removendo o valor 5
                     # ... <---> | 2 | <---> | 5 | <---> | 12 | <---> ...
                     #
                     # O proximo do valor 2 passa a apontar para o 12 e
                     # o anterior do valor 12 passa a apontar para o 2
                     #                     ---------------
-                    # ... <---> | 2 | <---|--- | 5 | ---|---> | 12 | <---> ... 
-                    no_atual.prev.next = no_atual.next
-                    no_atual.next.prev = no_atual.prev
+                    # ... <---> | 2 | <---|--- | 5 | ---|---> | 12 | <---> ...
+					no_atual.prev.next = no_atual.next
+					no_atual.next.prev = no_atual.prev
+					
+					# Se nao eh o no que estamos buscando va para o proximo
+					no_atual = no_atual.next
 
-            # Se nao eh o no que estamos buscando va para o proximo
-            no_atual = no_atual.next
 
 
 lista= Lista()
-for i in range (5):
+for i in range (10):
 	lista.append(i)
 
 print(lista)
 
-#lista.remove()
+lista.remove_last()
 
-#print(lista)
+print(lista)
+
+lista.remove_last()
+
+print(lista)
 
 #lista.remove()
 
